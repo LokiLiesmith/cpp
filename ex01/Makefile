@@ -1,17 +1,17 @@
 CXX		:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-SRC		:= phonebook.cpp
+SRC		:= phonebook.cpp Contact.cpp
 NAME	:= phonebook
 OBJDIR	:= obj
-OBJ		:= $(SRC:%.c=$(OBJDIR)/%.o)
+OBJ		:= $(SRC:%.cpp=$(OBJDIR)/%.o)
 
 all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-$(OBJDIR)/%.o: %.c | $(OBJDIR)
-	@$(CC) $C(FLAGS) -c $< -o $@
+$(OBJDIR)/%.o: %.cpp | $(OBJDIR)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
