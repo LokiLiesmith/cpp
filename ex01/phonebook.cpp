@@ -52,6 +52,19 @@ void PhoneBook::display_table()
 	}
 }
 
+int PhoneBook::valid_input(std::string input_idx)
+{
+	if (input_idx.empty())
+		return (0);
+	if (input_idx.length() > 1)
+		return (0);
+	if (input_idx[0] < '0' || input_idx[0] > '7')
+		return (0);
+	if (input_idx[0] - '0' >= count)
+		return (0);
+	return (1);
+}
+
 void PhoneBook::add_contact()
 {
 	Contact new_entry;

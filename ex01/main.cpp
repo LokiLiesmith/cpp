@@ -17,21 +17,17 @@ int main(void)
 		{
 			std::string input_idx;
 			phonebook.display_table();
-			while(input_idx.empty())
+			while(!phonebook.valid_input(input_idx))
 			{
+				std::cout << "Display index: " << std::endl;
 				if (!std::getline(std::cin, input_idx))
-					return ;
-				if (!input_idx.empty())
-					phonebook.display_contact(input_idx);
+					return (1);
 			}
-
+			int t = std::atoi(input_idx.c_str());
+			phonebook.display_contact(t);
 		}
 		else if (command == "EXIT")
 			break;
-
-		std::cout << "back in main\n";
 	}
-	phonebook.display_contact(0);
-	// std::cout << c1.get_first_name() << std::endl;
 	return (0);
 }

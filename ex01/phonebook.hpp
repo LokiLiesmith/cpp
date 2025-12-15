@@ -4,6 +4,7 @@
 # include <iostream>
 # include <string>
 # include <iomanip>
+# include <cstdlib>
 
 class Contact
 {
@@ -30,7 +31,6 @@ class Contact
 		std::string get_darkest_secret(){return darkest_secret;}
 };
 
-
 class PhoneBook
 {
 	Contact contact_arr[8];
@@ -41,10 +41,10 @@ class PhoneBook
 		PhoneBook();
 		void	add_contact();
 		void	display_table();
-		// void 	request_field(Contact &new_entry, Field field);
 		void	display_contact(int i);
 		int		get_count(){return count;}
-};
+		int		valid_input(std::string input_idx);
 
+};
 
 #endif
