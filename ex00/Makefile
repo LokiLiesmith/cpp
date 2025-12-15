@@ -1,18 +1,30 @@
-CXX		:= c++
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mrazem <mrazem@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/12/15 18:26:21 by mrazem            #+#    #+#              #
+#    Updated: 2025/12/15 18:27:32 by mrazem           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CXX			:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-SRC		:= megaphone.cpp
-NAME	:= megaphone
-OBJDIR	:= obj
-OBJ		:= $(SRC:%.c=$(OBJDIR)/%.o)
+SRC			:= megaphone.cpp
+NAME		:= megaphone
+OBJDIR		:= obj
+OBJ			:= $(SRC:%.c=$(OBJDIR)/%.o)
 
 
 all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-$(OBJDIR)/%.o: %.c | $(OBJDIR)
-	@$(CC) $C(FLAGS) -c $< -o $@
+$(OBJDIR)/%.o: %.cpp | $(OBJDIR)
+	@$(CXX) $C(CXXFLAGS) -c $< -o $@
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
