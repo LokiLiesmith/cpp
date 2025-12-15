@@ -1,19 +1,37 @@
 #include "phonebook.hpp"
 
-int main(int ac, char **av)
+int main(void)
 {
-    Contact c1("mark", "razem", "asd", "123123", "youwish");
+	PhoneBook phonebook;
+	std::string command;
 
-    if (ac != 2)
-        return(std::cout << "no bueno" << std::endl, 1);
-    std::string input = av[1];
-    if (input == "ADD")
-        std::cout << "ADD-BRANCH" << std::endl;
-    else if (input == "SEARCH")
-        std::cout << "SEARCH - Branch" << std::endl;
-    else if (input == "EXIT")
-        std::cout << "EXIT - Branch" << std::endl;
+	while (true)
+	{
+		std::cout << "> ";
+		if (!std::getline(std::cin, command))
+			break;
 
-    std::cout << c1.get_first_name() << std::endl;
-    return (0);
+		if (command == "ADD")
+			phonebook.add_contact();
+		else if (command == "SEARCH")
+		{
+			std::string input_idx;
+			phonebook.display_table();
+			while(input_idx.empty())
+			{
+				if (!std::getline(std::cin, input_idx))
+					return ;
+				if (!input_idx.empty())
+					phonebook.display_contact(input_idx);
+			}
+
+		}
+		else if (command == "EXIT")
+			break;
+
+		std::cout << "back in main\n";
+	}
+	phonebook.display_contact(0);
+	// std::cout << c1.get_first_name() << std::endl;
+	return (0);
 }

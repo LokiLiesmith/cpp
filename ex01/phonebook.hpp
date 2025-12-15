@@ -3,19 +3,7 @@
 
 # include <iostream>
 # include <string>
-
-class PhoneBook
-{
-	Contact contact_arr[8];
-	int     next_index;
-	int     count;
-	
-	public:
-		void	add_contact();
-		void	display_table(); 
-		void	display_contact();
-		int		get_count();
-};
+# include <iomanip>
 
 class Contact
 {
@@ -24,8 +12,6 @@ class Contact
 	std::string nickname;
 	std::string phone_number;
 	std::string darkest_secret;
-
-
 
 	public:
 		Contact();
@@ -43,5 +29,22 @@ class Contact
 		std::string get_phone_number(){return phone_number;}
 		std::string get_darkest_secret(){return darkest_secret;}
 };
+
+
+class PhoneBook
+{
+	Contact contact_arr[8];
+	int     next_index;
+	int     count;
+	
+	public:
+		PhoneBook();
+		void	add_contact();
+		void	display_table();
+		// void 	request_field(Contact &new_entry, Field field);
+		void	display_contact(int i);
+		int		get_count(){return count;}
+};
+
 
 #endif
